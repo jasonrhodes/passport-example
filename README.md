@@ -5,9 +5,9 @@ To get the app running:
 * `npm install`
 * `PORT=4001 node app.js`
 
-To see passport-enabled routes in action:
+To see passport-enabled login route in action:
 ```
-$ curl -i localhost:4001/register -X POST -H 'Content-type: application/json' -d '{"username": "good", "password": "great"}'
+$ curl -i localhost:4001/login -X POST -H 'Content-type: application/json' -d '{"username": "good", "password": "great"}'
 HTTP/1.1 200 OK
 X-Powered-By: Express
 Content-Type: text/html; charset=utf-8
@@ -19,7 +19,7 @@ Connection: keep-alive
 yay
 
 
-$ curl -i localhost:4001/register -X POST -H 'Content-type: application/json' -d '{"username": "good", "password": "bad"}'
+$ curl -i localhost:4001/login -X POST -H 'Content-type: application/json' -d '{"username": "good", "password": "bad"}'
 HTTP/1.1 401 Unauthorized
 X-Powered-By: Express
 Date: Wed, 12 Apr 2017 01:52:56 GMT
