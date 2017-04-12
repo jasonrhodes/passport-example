@@ -4,6 +4,8 @@ Docs I used:
 * http://passportjs.org/docs/configure
 * https://github.com/passport/express-4.x-local-example/blob/master/server.js
 
+_Note about successRedirect / failureRedirect_: I realized as I did this that you probably don't need those, maybe you would for the failure case, but I was forgetting that passport _is middleware_, so you can call `passport.authenticate()` and then chain another function after that, like `app.post('/some/route', passport.authenticate('something'), function(req, res) {})` and if the authentication fails it'll fail the route for you with an automatic 401, but if it succeeds you can just do what you'd normally do in that function. That's why you don't see any of those successRedirect keys etc. in these ROUGH examples. 
+
 To get the app running locally:
 * Clone repo and `cd` into repo folder
 * `npm install`
