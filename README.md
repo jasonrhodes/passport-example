@@ -1,6 +1,10 @@
 ## A baseline passport example
 
-To get the app running:
+Docs I used:
+* http://passportjs.org/docs/configure
+* https://github.com/passport/express-4.x-local-example/blob/master/server.js
+
+To get the app running locally:
 * Clone repo and `cd` into repo folder
 * `npm install`
 * `PORT=4001 node app.js`
@@ -101,3 +105,4 @@ Connection: keep-alive
 Content-Length: 12
 
 Unauthorized
+```
