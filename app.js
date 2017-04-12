@@ -4,24 +4,18 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
-// set up passport strategies
-passport.use('sign-up', new LocalStrategy(function (username, password, done) {
-  if (username === 'bad') {
-    done(null, false);
-    return;
-  }
-
-  done(null, { username: username });
-}));
-
+// set up passport strategy for login
 passport.use('login', new LocalStrategy(function (username, password, done) {
-  if (username === 'bad') {
+  if (username === 'ew' || password === 'bad') {
     done(null, false);
     return;
   }
 
   done(null, { username: username });
 }));
+
+
+// These 2 functions seem to be required, even though we're not doing much with sessions here in this example
 
 // tell passport how to store a unique value for the user
 passport.serializeUser(function(user, cb) {
@@ -35,13 +29,13 @@ passport.deserializeUser(function(username, cb) {
 
 // set up the express app
 app.use(bodyParser.json());
-app.use(passport.initialize());
+app.use(passport.initialize()); // <-- seems to be required, not sure what it does
 
-// Use passport.authenticate as express middleware, will auto return 401 for failures
-app.post('/register', passport.authenticate('sign-up'), function (req, res) {
+app.post('/register', function (req, res) {
   res.status(200).send('yay');
 });
 
+// Use passport.authenticate as express middleware, will auto return 401 for failures
 app.post('/login', passport.authenticate('login'), function (req, res) {
   res.status(200).send('yay');
 });

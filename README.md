@@ -19,7 +19,7 @@ Connection: keep-alive
 yay
 
 
-$ curl -i localhost:4001/register -X POST -H 'Content-type: application/json' -d '{"username": "bad", "password": "great"}'
+$ curl -i localhost:4001/register -X POST -H 'Content-type: application/json' -d '{"username": "good", "password": "bad"}'
 HTTP/1.1 401 Unauthorized
 X-Powered-By: Express
 Date: Wed, 12 Apr 2017 01:52:56 GMT
